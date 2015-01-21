@@ -1,0 +1,28 @@
+<% layout('../../../views/layout.ejs') -%>
+<div class="row-fluid">
+  <div class="span6">
+    <h3>CPK Logs</h3>
+  </div>
+  <div class="span6 pull-right" style="text-align:right">
+       <a href="/cpklogs/upload" class='btn btn-info pull-right'>Add a log</a>
+  </div>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Perspective</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% logs.forEach(function(log) { %>
+        <tr>
+            <td><a href='/cpklogs/view/<%= log.file %>' target="_blank"><%= log.title %></a></td>
+            <td><%= log.date %></td>
+            <td><%= log.pov %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>

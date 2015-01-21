@@ -1,14 +1,14 @@
-var plugin = exports = module.exports = {};
-var app;
+var path = require('path');
 
-plugin.name = "CPK Logs";
-plugin.version = "1.0";
-plugin.nav = {
-    text: "CPK Logs",
-    url: "/cpklogs/list"
-};
+module.exports = function(app) {
+    // app.set('views', path.join(__dirname, 'cpklogs/views'));
 
-plugin.load = function(app) {   
-    var cpklogs = require('cpklogs')(app);
-    cpklogs.registerRoutes(app);
+    app.locals.plugins = app.locals.plugins || [];
+
+    app.locals.plugins.push({
+        text: "CPK Logs",
+        url: "/cpklogs/list"
+    });
+
+    require('./cpklogs/index.js')(app);
 }
